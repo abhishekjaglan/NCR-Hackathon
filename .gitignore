@@ -1,0 +1,4 @@
+jira-client/node_modules/*
+jira-client/build/*
+jira-mcp/node_modules/*
+jira-mcp/build/*
