@@ -1,7 +1,8 @@
 import express from 'express';
 import { Request, Response } from 'express-serve-static-core';
 import { spawn } from 'child_process';
-import { McpClient, StdioClientTransport } from '@modelcontextprotocol/sdk';
+import { StdioClientTransport } from '@modelcontextprotocol/sdk/client/stdio.js';
+import { Client } from '@modelcontextprotocol/sdk/client/index.js';
 import OpenAI from 'openai';
 
 // Initialize Azure OpenAI client
@@ -25,7 +26,13 @@ const transport = new StdioClientTransport({
   stdin: mcpServerProcess.stdin!,
   stdout: mcpServerProcess.stdout!,
 });
-const client = new McpClient({ name: 'jira-client', version: '1.0.0' });
+const client = new Client({ name: 'jira-client', version: '1.0.0' });
+
+interface McpTool {
+  name: string;
+  description: string;
+  parameters: any; // Refine this if you know the exact structure
+}
 
 // Connect to the server and retrieve tools
 let functionDefinitions: any[] = [];
@@ -33,8 +40,8 @@ let functionDefinitions: any[] = [];
   try {
     await client.connect(transport);
     console.log('Connected to Jira MCP server');
-    const tools = await client.listTools();
-    functionDefinitions = tools.map((tool) => ({
+    const tools = (await client.listTools()) as McpTool[];
+    functionDefinitions = tools.map((tool: McpTool) => ({
       type: 'function',
       function: {
         name: tool.name,
@@ -42,7 +49,7 @@ let functionDefinitions: any[] = [];
         parameters: tool.parameters,
       },
     }));
-    console.log('Retrieved tools:', tools.map((t) => t.name));
+    console.log('Retrieved tools:', tools.map((t: McpTool) => t.name));
   } catch (error) {
     console.error('Error connecting to MCP server or listing tools:', error);
     process.exit(1);
