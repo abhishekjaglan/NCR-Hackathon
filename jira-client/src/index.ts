@@ -18,7 +18,7 @@ const mcpServerProcess = spawn('node', ['path/to/jira-mcp/dist/index.js', '--con
 
 // Handle server startup errors
 mcpServerProcess.on('error', (err) => {
-  console.error('Failed to start Jira MCP server:', err);
+  console.error('Failed to start Jira MCP server:', err)
 });
 
 // Set up MCP client with stdio transport
