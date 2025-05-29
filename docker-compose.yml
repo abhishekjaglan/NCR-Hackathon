@@ -1,0 +1,45 @@
+services:
+
+  redis:
+    image: redis:7
+    ports:
+      - '6379:6379'
+    networks:
+      - mcp_network
+    volumes:
+      - redis-data:/data
+      
+  be:
+    build:
+      context: .
+      dockerfile: ./jira-client/Dockerfile
+    depends_on:
+      - redis
+    ports:
+      - '3000:3000'
+    networks:
+      - mcp_network
+    environment:
+      - AZURE_ENDPOINT=${AZURE_ENDPOINT}
+      - AZURE_API_VERSION=${AZURE_API_VERSION}
+      - AZURE_API_KEY=${AZURE_API_KEY}
+      - AZURE_MODEL=${AZURE_MODEL}
+      - PORT=${PORT}
+    
+  fe:
+    build:
+      context: ./chatbot-fe/.
+      dockerfile: Dockerfile
+    depends_on:
+      - be
+    ports:
+      - '4173:4173'
+    networks:
+      - mcp_network
+
+networks:
+  mcp_network:
+    driver: bridge
+
+volumes:
+  redis-data:
