@@ -1,0 +1,35 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "rmdir /s /q build 2>nul && tsc -b && node build/index.js",
+    "builddev": "rmdir /s /q build 2>nul && tsc -b",
+    "build": "tsc -b",
+    "dev": "node build/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@types/axios": "^0.9.36",
+    "@types/node": "^24.0.10",
+    "builtins": "^5.1.0",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.11.0",
+    "@types/ioredis": "^5.0.0",
+    "@types/winston": "^2.4.4",
+    "ioredis": "^5.6.1",
+    "node-fetch": "^3.3.2",
+    "typescript": "^5.8.3",
+    "winston": "^3.17.0",
+    "axios": "^1.10.0",
+    "dotenv": "^17.0.1"
+
+  }
+}

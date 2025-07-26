@@ -1,45 +1,38 @@
 services:
-
   redis:
-    image: redis:7
+    image: redis:7-alpine
+    container_name: sdlc-redis
     ports:
-      - '6379:6379'
+      - "6379:6379"
     networks:
-      - mcp_network
-    volumes:
-      - redis-data:/data
-      
-  be:
-    build:
+      - sdlc-network
+
+  client-api:
+    build: 
       context: .
-      dockerfile: ./jira-client/Dockerfile
+      dockerfile: client/Dockerfile
+    container_name: sdlc-client-api
+    ports:
+      - "3000:3000"
+    environment:
+      - DOCKER_ENV=true
+      - REDIS_HOST=redis
+      - NODE_ENV=development
     depends_on:
       - redis
-    ports:
-      - '3000:3000'
     networks:
-      - mcp_network
-    environment:
-      - AZURE_ENDPOINT=${AZURE_ENDPOINT}
-      - AZURE_API_VERSION=${AZURE_API_VERSION}
-      - AZURE_API_KEY=${AZURE_API_KEY}
-      - AZURE_MODEL=${AZURE_MODEL}
-      - PORT=${PORT}
-    
-  fe:
-    build:
-      context: ./chatbot-fe/.
-      dockerfile: Dockerfile
+      - sdlc-network
+
+  frontend:
+    build: ./chatbot-fe
+    container_name: sdlc-frontend
+    ports:
+      - "4173:4173"
     depends_on:
-      - be
-    ports:
-      - '4173:4173'
+      - client-api
     networks:
-      - mcp_network
+      - sdlc-network
 
 networks:
-  mcp_network:
+  sdlc-network:
     driver: bridge
-
-volumes:
-  redis-data:

@@ -6,6 +6,10 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [
     react(),
-    tailwindcss()
+    tailwindcss(),
+    
   ],
+  preview: {
+    allowedHosts: ['localhost', 'gassist-dev.ncratleos.com']
+  }
 })

@@ -11,7 +11,7 @@ const Home: React.FC = () => {
             className="h-8 w-auto"
           />
           <h1 className="text-2xl font-bold text-neutral-100 absolute left-1/2 transform -translate-x-1/2">
-            JIRA AI ASSISTANT
+            G-ASSIST
           </h1>
           <div className="w-8"></div> {/* Spacer to balance the layout */}
         </div>

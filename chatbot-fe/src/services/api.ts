@@ -1,7 +1,8 @@
 
 import type { BackendChatResponse, DisplayMessage } from '../types';
 
-const API_BASE_URL = 'http://localhost:3000'; // Ensure this matches your backend port
+// const API_BASE_URL = 'https://gassist-dev.ncratleos.com/sdlc'; // Ensure this matches your backend port
+const API_BASE_URL = 'http://localhost:3000';
 const FIXED_SESSION_ID = "fixed-session-dev-001";
 
 export const sendMessageToBackend = async (
@@ -46,7 +47,7 @@ export const fetchChatHistory = async (): Promise<DisplayMessage[]> => {
     if (!response.ok) {
         const errorData = await response.json().catch(() => ({ detail: 'Network response was not ok and error details could not be parsed.' }));
         console.error('Error fetching history from backend:', errorData);
-        throw new Error(errorData.detail || errorData.error || 'Failed to fetch chat history');
+        throw new Error(errorData.detail || errorData.error || '');
     }
     const historyData: DisplayMessage[] = await response.json();
     console.log("Fetched history from backend: ", historyData);

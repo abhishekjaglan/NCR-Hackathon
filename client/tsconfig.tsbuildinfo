@@ -1,0 +1,1 @@
+{"root":["./src/index.ts","./src/server/server.ts","./src/service/chatservice.ts","./src/utils/config.ts","./src/utils/redisclient.ts"],"version":"5.8.3"}

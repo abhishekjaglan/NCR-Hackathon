@@ -1,0 +1,9 @@
+catm-arcs-fccs-aim - 2025-07-14T09:15:44.008Z - [32minfo[39m: [JiraApiService] Initialized with email: aj385009@ncratleos.com, Token ending with: 0=B7751E53
+catm-arcs-fccs-aim - 2025-07-14T09:15:46.082Z - [32minfo[39m: [JiraApiService.fetchJson] Response status for https://ncratleosengtools.atlassian.net/rest/api/3/field: 200
+catm-arcs-fccs-aim - 2025-07-14T09:15:47.018Z - [32minfo[39m: [JiraApiService.fetchJson] Response status for https://ncratleosengtools.atlassian.net/rest/api/3/label?maxResults=1000: 200
+catm-arcs-fccs-aim - 2025-07-14T09:15:47.036Z - [32minfo[39m: [JiraApiService.fetchJson] Response status for https://ncratleosengtools.atlassian.net/rest/agile/1.0/board/5892/sprint?state=active,future,closed: 200
+catm-arcs-fccs-aim - 2025-07-14T09:15:47.046Z - [32minfo[39m: [JiraApiService.fetchJson] Response status for https://ncratleosengtools.atlassian.net/rest/api/3/issue/createmeta?projectKeys=PFA&expand=projects.issuetypes: 200
+catm-arcs-fccs-aim - 2025-07-14T09:15:47.702Z - [32minfo[39m: [JiraApiService.fetchJson] Response status for https://ncratleosengtools.atlassian.net/rest/api/3/priority: 200
+catm-arcs-fccs-aim - 2025-07-14T09:15:47.739Z - [32minfo[39m: [JiraApiService.fetchJson] Response status for https://ncratleosengtools.atlassian.net/rest/api/3/search?jql=project%20%3D%20%22PFA%22%20AND%20issuetype%20%3D%20Epic%20ORDER%20BY%20created%20DESC&fields=summary,status,issuetype,created,updated,key,id&maxResults=100: 200
+catm-arcs-fccs-aim - 2025-07-14T09:15:47.844Z - [32minfo[39m: [JiraApiService.fetchJson] Response status for https://ncratleosengtools.atlassian.net/rest/api/3/user/assignable/search?project=PFA: 200
+catm-arcs-fccs-aim - 2025-07-14T09:16:03.429Z - [32minfo[39m: [JiraApiService.fetchJson] Response status for https://ncratleosengtools.atlassian.net/rest/api/3/project: 200
